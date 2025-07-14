@@ -1,0 +1,32 @@
+# STAR genome indices
+
+### hg38+mm10 hybrid STAR index: star_hg38_mm10_index
+
+cat Homo_sapiens.GRCh38.dna.primary_assembly.fa <(cat Mus_musculus.GRCm38.dna.primary_assembly.fa|sed 's/^>/&mouse_/') > hg38_mm10.fa
+cat Homo_sapiens.GRCh38.108.gtf <(awk 'BEGIN {OFS="\t"} {if ($1 !~ /^#/) $1 = "mouse_" $1; print}' Mus_musculus.GRCm38.102.gtf) > hg38_mm10.gtf
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir star_hg38_mm10_index --sjdbOverhang 100 --genomeFastaFiles "hg38_mm10.fa" --sjdbGTFfile "hg38_mm10.gtf"
+
+### mm10 STAR index: star_mm10_index
+
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir star_mm10_index --genomeFastaFiles Mus_musculus.GRCm38.dna.primary_assembly.fa --sjdbGTFfile Mus_musculus.GRCm38.102.gtf --sjdbOverhang 100
+
+### mm11 STAR index: star_mm11_index
+
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir star_mm11_index --genomeFastaFiles Mus_musculus.GRCm39.dna.primary_assembly.fa --sjdbGTFfile Mus_musculus.GRCm39.108.gtf --sjdbOverhang 100
+
+### hg38 STAR index: star_hg38_index
+
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir star_hg38_index --genomeFastaFiles Homo_sapiens.GRCh38.dna.primary_assembly.fa --sjdbGTFfile Homo_sapiens.GRCh38.108.gtf --sjdbOverhang 100
+
+# VCF file information
+
+### CAST+129 mm10 SNPs
+
+bcftools merge -o CAST_EiJ_and_129S1_SvImJ_SNPs_mm10.vcf.gz -O z CAST_EiJ.mgp.v5.snps.dbSNP142.vcf.gz 129S1_SvImJ.mgp.v5.snps.dbSNP142.vcf.gz
+
+### mm10 STAR index with custom sequence: star_mm10_dcas9_bfp_krab_index
+
+cat Mus_musculus.GRCm38.102.gtf dCas9_BFP_KRAB.gtf > mm10_dcas9_bfp_krab.gtf
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir star_mm10_dcas9_bfp_krab_index --genomeFastaFiles Mus_musculus.GRCm38.dna.primary_assembly.fa dCas9_BFP_KRAB.fasta --sjdbGTFfile mm10_dcas9_bfp_krab.gtf --sjdbOverhang 100
+
+

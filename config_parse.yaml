@@ -1,0 +1,69 @@
+# Email to which errors will be sent
+email: ""
+#The ID for the alignment (if we run alignment multiple times [e.g. for different genomes], use different IDs for each run)
+align_id: "run_1"
+#Location of the config file for splitcode's barcodeIdentification
+bID: "config_parse.txt"
+#The "prefix" of the tags (within each tag group) in the order that they are expected to appear; omit to skip ligation efficiency calculation
+tag_prefix_order: "pbs,pbs,rt_pbs"
+# Path to samples JSON file, e.g. as produced with the fastq2json.py script (note: don't put spaces in sample names)
+samples: "example_samples.json"
+#Location of the samples in FASTQ read format (*_R1.fastq.gz and *_R2.fastq.gz)
+fastqs: "./"
+#Output directory
+output_dir: "out_dir/"
+#Conda environment: either a path to a conda environment YAML file or the name of an existing conda environment
+conda_env: "envs/swiftseq.yaml"
+# Scripts directory
+scripts_dir: "scripts/"
+#Index adapter trimming sequences
+R1_adapter: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
+R2_adapter: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"
+#UMI extraction pattern
+umi_extraction_pattern: "0:0<R1>0:-1,1:0<R1>1:-1,2:0<R1>2:-1,3:0<R2>3:-1"
+#Genome FASTA and GTF files (not necessary if index is already created and supplied)
+genome_fasta: "/home/dsullivan/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz"
+genome_gtf: "/home/dsullivan/Mus_musculus.GRCm38.102.gtf.gz"
+#VCF file to look at polymorphisms for allele-specific mapping (set use_vcf_wasp_workflow to False to skip variant workflow altogether)
+vcf_file: "/groups/guttman/delaney/swiftseq_files/CAST_EiJ_and_129S1_SvImJ_SNPs_mm10.vcf"
+#Species (i.e. column names in VCF file) which we'll use for allele-specific mapping; Set vcf_s1 to REF when one haploid is the REF (reference) species; Leave vcf_s1 blank to use your VCF file directly without preprocessing
+vcf_s1: "129S1_SvImJ"
+vcf_s2: "CAST_EiJ"
+#Enable the STAR+WASP workflow for allele-specific mapping, making use of the VCF information supplied
+use_vcf_wasp_workflow: True
+#Whether to perform an additional analysis for each species by splitting up the reads by species
+split_allele_analysis: True
+#Eliminate certain reads (e.g. rRNAs, repeats, etc.) from the mapping process based on alignment to supplied FASTA file; set use_exclusion_filter to False to eliminate this procedure altogether
+exclusion_fasta_file: "/groups/guttman/delaney/swiftseq_files/mm10_ncRNA.fa"
+use_exclusion_filter: True
+#Merge anndata files from multiple samples into a single anndata object (merged.h5ad)
+merge_anndata: True
+#Use STAR/STARsolo alignment
+use_star: True
+#STAR index (leave blank to generate a new index from supplied genome fasta and genome gtf)
+star_index: "/groups/guttman/delaney/swiftseq_files/star_mm10_index"
+#Additional parameters to supply to STAR alignment; e.g. for outputting unmapped reads, set: --outReadsUnmapped Fastx
+star_additional_params: ""
+#Features options (note: "features_start" is relative to the end of barcode+UMI; e.g. position 0 means search right after the UMI; features_length is length of search window)
+features_fasta_file: "/home/dsullivan/CRISPRi_v2_mouse.trim_1_29_forward.fa"
+features_start: 0
+features_length: 45
+features_kmer_length: 27
+use_features: False
+#Use kallisto for mapping reads to reference
+use_kallisto: False
+#kallisto index files (leave blank to generate a new index from supplied genome fasta and genome gtf)
+kallisto_index: "/home/dsullivan/upload2/mouse_nac/index.idx"
+kallisto_index_t2g: "/home/dsullivan/upload2/mouse_nac/t2g.txt"
+kallisto_index_c1: "/home/dsullivan/upload2/mouse_nac/cdna.txt"
+kallisto_index_c2: "/home/dsullivan/upload2/mouse_nac/nascent.txt"
+#D-list (i.e. background filter) to use when generating a NEW kallisto index (if blank, will be automatically set to the genome fasta)
+kallisto_dlist: ""
+#Specify number of reads to subset (set subset_n to 0 to disable) and the directory (temp_dir) to store those subsetted reads
+subset_n: 0
+temp_dir: "tmp/"
+#Load balancing
+thread_factor: 1
+num_chunks: 1
+keep_fastq_chunks: False
+

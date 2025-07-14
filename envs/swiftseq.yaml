@@ -1,0 +1,26 @@
+# last updated: 2024-03-22
+name: swiftseq
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - star=2.7.11b
+  - cutadapt=4.2
+  - splitcode=0.31.1
+  - fastqc=0.12.1
+  - numpy=1.23.3
+  - pandas=1.5.2
+  - python=3.10
+  - anndata=0.8.0
+  - matplotlib=3.6.3
+  - scipy=1.10.0
+  - samtools=1.21
+  - bcftools=1.21
+  - bowtie2=2.5.4
+  - seqkit=2.8.1
+  - pysam=0.22.1
+  - pigz=2.8
+  - kb-python=0.28.2
+  - snakemake=7.18.2
+  - plotly=6.0.0
+

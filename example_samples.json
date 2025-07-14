@@ -1,0 +1,10 @@
+{
+  "0pt5pctFA3W": {
+    "R1": ["/groups/guttman/primarydata/sequencingruns/20241219/oettlin/0pt5pctFA3W/0pt5pctFA3W_R1.fastq.gz", "/groups/guttman/primarydata/sequencingruns/20241219/oettlin/0pt5pctFA3W/0pt5pctFA3W_R1.fastq.gz"],
+    "R2": ["/groups/guttman/primarydata/sequencingruns/20241219/oettlin/0pt5pctFA3W/0pt5pctFA3W_R2.fastq.gz", "/groups/guttman/primarydata/sequencingruns/20241219/oettlin/0pt5pctFA3W/0pt5pctFA3W_R2.fastq.gz"]
+  },
+  "1pctFA2W": {
+    "R1": ["/groups/guttman/primarydata/sequencingruns/20241219/oettlin/1pctFA2W/1pctFA2W_R1.fastq.gz"],
+    "R2": ["/groups/guttman/primarydata/sequencingruns/20241219/oettlin/1pctFA2W/1pctFA2W_R2.fastq.gz"]
+  }
+}

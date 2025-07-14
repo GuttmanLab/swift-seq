@@ -1,0 +1,63 @@
+__default__:
+    time: "12:00:00"
+    mem: 20g
+    cpus: 1
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.out"
+    error: "workup/logs/cluster/{rule}.err"
+initial_fastqc:
+    time: "12:00:00"
+    mem: 16g
+    cpus: 2
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+adaptor_trimming_pe:
+    time: "12:00:00"
+    mem: 16g
+    cpus: 12
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+post_trim_fastqc:
+    time: "12:00:00"
+    mem: 16g
+    cpus: 2
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+splitcode_barcodeID:
+    time: "12:00:00"
+    mem: 32g
+    cpus: 12
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+calc_ligation_efficiency:
+    time: "05:00:00"
+    mem: 20g
+    cpus: 1
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+splitcode_format_umis:
+    time: "12:00:00"
+    mem: 8g
+    cpus: 8
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+starsolo_align:
+    time: "12:00:00"
+    mem: 50g
+    cpus: 12
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
+generate_anndata_starsolo:
+    time: "12:00:00"
+    mem: 32g
+    cpus: 1
+    nodes: 1
+    output: "workup/logs/cluster/{rule}.{wildcards.sample}.out"
+    error: "workup/logs/cluster/{rule}.{wildcards.sample}.err"
