@@ -6,7 +6,7 @@ channels:
 dependencies:
   - star=2.7.11b
   - cutadapt=4.2
-  - splitcode=0.31.1
+  - splitcode=0.31.6
   - fastqc=0.12.1
   - numpy=1.23.3
   - pandas=1.5.2
